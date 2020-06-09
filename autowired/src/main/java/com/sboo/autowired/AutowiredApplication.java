@@ -12,11 +12,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.function.Supplier;
 
 @SpringBootApplication
 @PropertySource("classpath:/app.properties")
+@EnableAsync
 public class AutowiredApplication {
 
     public static void main(String[] args) {
@@ -28,6 +30,7 @@ public class AutowiredApplication {
         var messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:/messages");
         messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(3);
         return messageSource;
     }
 }
