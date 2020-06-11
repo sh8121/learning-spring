@@ -1,7 +1,13 @@
 package com.sboo.autowired;
 
-public interface EventService {
-    void createEvent();
-    void publishEvent();
-    void deleteEvent();
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EventService {
+
+    @NonNull
+    public String createEvent(@NonNull String name) {
+        return "hello" + name;
+    }
 }
