@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,6 +23,8 @@ import java.util.function.Supplier;
 public class AutowiredApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AutowiredApplication.class, args);
+        SpringApplication app = new SpringApplication(AutowiredApplication.class);
+        app.setWebApplicationType(WebApplicationType.NONE);
+        app.run(args);
     }
 }
