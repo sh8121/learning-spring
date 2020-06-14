@@ -17,12 +17,4 @@ public class SpringbootTutorialApplication {
         application.setWebApplicationType(WebApplicationType.NONE);
         application.run(args);
     }
-
-    @Bean
-    public Holoman holoman() {
-        Holoman holoman = new Holoman();
-        holoman.setName("sbooooooo");
-        holoman.setHowLong(10);
-        return holoman;
-    }
 }

@@ -1,2 +1,4 @@
+META-INF/spring-configuration-metadata.json
 com/sboo/customspringbootstarter/HolomanConfiguration.class
+com/sboo/customspringbootstarter/HolomanProperties.class
 com/sboo/customspringbootstarter/Holoman.class

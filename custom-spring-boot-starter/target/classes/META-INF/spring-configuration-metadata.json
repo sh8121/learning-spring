@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "holoman",
+      "type": "com.sboo.customspringbootstarter.HolomanProperties",
+      "sourceType": "com.sboo.customspringbootstarter.HolomanProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "holoman.how-long",
+      "type": "java.lang.Integer",
+      "sourceType": "com.sboo.customspringbootstarter.HolomanProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "holoman.name",
+      "type": "java.lang.String",
+      "sourceType": "com.sboo.customspringbootstarter.HolomanProperties"
+    }
+  ],
+  "hints": []
+}
