@@ -16,8 +16,14 @@ public class SpringframeworkTutorialApplication {
         System.out.println(Arrays.toString(beanDefinitionNames));
         BookService bookService1 = context.getBean(BookService.class);
         BookService bookService2 = (BookService)context.getBean("bookService");
+        BookRepository bookRepository1 = context.getBean(BookRepository.class);
+        BookRepository bookRepositoty2= bookService1.getBookRepository();
+
         System.out.println(bookService1);
         System.out.println(bookService2);
+
+        System.out.println(bookRepository1);
+        System.out.println(bookRepositoty2);
     }
 
 }
