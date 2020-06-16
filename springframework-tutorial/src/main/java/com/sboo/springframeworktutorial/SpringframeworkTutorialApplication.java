@@ -3,6 +3,7 @@ package com.sboo.springframeworktutorial;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
@@ -11,7 +12,7 @@ import java.util.Arrays;
 public class SpringframeworkTutorialApplication {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         String[] beanDefinitionNames = context.getBeanDefinitionNames();
         System.out.println(Arrays.toString(beanDefinitionNames));
         BookService bookService1 = context.getBean(BookService.class);
