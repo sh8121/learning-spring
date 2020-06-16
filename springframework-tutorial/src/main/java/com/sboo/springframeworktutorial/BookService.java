@@ -5,12 +5,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 public class BookService {
+    @Autowired
     BookRepository bookRepository;
 
     public BookRepository getBookRepository() {
         return bookRepository;
     }
-    
+
     public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
