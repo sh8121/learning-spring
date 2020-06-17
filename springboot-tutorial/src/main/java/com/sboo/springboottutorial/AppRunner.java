@@ -12,10 +12,18 @@ public class AppRunner implements ApplicationRunner {
     @Value("${sboo.name}")
     private String name;
 
+    @Value("${sboo.fullName}")
+    private String fullName;
+
+    @Value("${sboo.age}")
+    private int age;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("===================");
         System.out.println(name);
+        System.out.println(fullName);
+        System.out.println(age);
         System.out.println("===================");
     }
 }
