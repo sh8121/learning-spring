@@ -8,8 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringbootTutorialApplication {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(SpringbootTutorialApplication.class);
-        app.addListeners(new SampleListener());
-        //app.setWebApplicationType(WebApplicationType.REACTIVE);
+        app.setWebApplicationType(WebApplicationType.NONE);
         app.run(args);
     }
 }
