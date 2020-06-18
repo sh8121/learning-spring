@@ -3,8 +3,8 @@ package com.sboo.springboottutorial;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationProperties("sboo")
+//@Component
+//@ConfigurationProperties("sboo")
 public class SbooProperties {
     private String name;
     private int age;
