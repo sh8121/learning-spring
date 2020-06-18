@@ -2,5 +2,6 @@ package com.sboo.springframeworktutorial;
 
 import org.springframework.stereotype.Repository;
 
-public interface BookRepository {
+@Repository
+public class MyBookRepository implements BookRepository {
 }
