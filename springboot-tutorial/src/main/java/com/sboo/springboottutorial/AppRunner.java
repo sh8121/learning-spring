@@ -13,10 +13,15 @@ public class AppRunner implements ApplicationRunner {
     @Autowired
     private String hello;
 
+    @Autowired
+    private SbooProperties sbooProperties;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("===================");
         System.out.println(hello);
+        System.out.println(sbooProperties.getName());
+        System.out.println(sbooProperties.getFullName());
         System.out.println("===================");
     }
 }
