@@ -11,12 +11,6 @@ import org.springframework.context.annotation.Bean;
 //@EnableConfigurationProperties(SbooProperties.class)
 public class SpringbootTutorialApplication {
 
-    @Bean
-    @ConfigurationProperties("sboo")
-    public SbooProperties sbooProperties() {
-        return new SbooProperties();
-    }
-
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(SpringbootTutorialApplication.class);
         app.setWebApplicationType(WebApplicationType.NONE);

@@ -19,6 +19,7 @@ public class AppRunner implements ApplicationRunner {
         System.out.println(sbooProperties.getName());
         System.out.println(sbooProperties.getFullName());
         System.out.println(sbooProperties.getAge());
+        System.out.println(sbooProperties.getSessionTimeout());
         System.out.println("===================");
     }
 }

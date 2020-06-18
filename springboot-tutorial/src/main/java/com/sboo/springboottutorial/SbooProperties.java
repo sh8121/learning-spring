@@ -1,14 +1,21 @@
 package com.sboo.springboottutorial;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.convert.DurationUnit;
 import org.springframework.stereotype.Component;
 
-//@Component
-//@ConfigurationProperties("sboo")
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
+@Component
+@ConfigurationProperties("sboo")
 public class SbooProperties {
     private String name;
     private int age;
     private String fullName;
+
+    @DurationUnit(ChronoUnit.SECONDS)
+    private Duration sessionTimeout = Duration.ofSeconds(30);
 
     public String getName() {
         return name;
@@ -32,5 +39,13 @@ public class SbooProperties {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Duration getSessionTimeout() {
+        return sessionTimeout;
+    }
+
+    public void setSessionTimeout(Duration sessionTimeout) {
+        this.sessionTimeout = sessionTimeout;
     }
 }
