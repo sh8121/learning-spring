@@ -11,15 +11,12 @@ import org.springframework.stereotype.Component;
 public class AppRunner implements ApplicationRunner {
 
     @Autowired
-    SbooProperties sbooProperties;
+    private String hello;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("===================");
-        System.out.println(sbooProperties.getName());
-        System.out.println(sbooProperties.getFullName());
-        System.out.println(sbooProperties.getAge());
-        System.out.println(sbooProperties.getSessionTimeout());
+        System.out.println(hello);
         System.out.println("===================");
     }
 }
