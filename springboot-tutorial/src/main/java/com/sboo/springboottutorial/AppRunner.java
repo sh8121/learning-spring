@@ -1,5 +1,7 @@
 package com.sboo.springboottutorial;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppRunner implements ApplicationRunner {
 
+    private Logger logger = LoggerFactory.getLogger(AppRunner.class);
+
     @Autowired
     private String hello;
 
@@ -18,10 +22,10 @@ public class AppRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("===================");
-        System.out.println(hello);
-        System.out.println(sbooProperties.getName());
-        System.out.println(sbooProperties.getFullName());
-        System.out.println("===================");
+        logger.info("==========================");
+        logger.info(hello);
+        logger.info(sbooProperties.getName());
+        logger.info(sbooProperties.getFullName());
+        logger.info("==========================");
     }
 }
