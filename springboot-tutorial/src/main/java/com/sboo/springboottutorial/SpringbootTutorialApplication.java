@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-//@EnableConfigurationProperties(SbooProperties.class)
 public class SpringbootTutorialApplication {
 
     public static void main(String[] args) {

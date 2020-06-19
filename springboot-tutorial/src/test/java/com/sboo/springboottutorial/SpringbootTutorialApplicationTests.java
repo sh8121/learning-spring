@@ -8,16 +8,9 @@ import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestPropertySource(locations = "classpath:/test.properties")
 @SpringBootTest
 class SpringbootTutorialApplicationTests {
-
-    @Autowired
-    Environment environment;
-
     @Test
-    void contextLoads() {
-        assertThat(environment.getProperty("sboo.name")).isEqualTo("Sang Hoon3");
-    }
+    void contextLoads() {}
 
 }
