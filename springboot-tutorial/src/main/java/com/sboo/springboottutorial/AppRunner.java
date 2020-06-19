@@ -22,10 +22,10 @@ public class AppRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        logger.info("==========================");
-        logger.info(hello);
-        logger.info(sbooProperties.getName());
-        logger.info(sbooProperties.getFullName());
-        logger.info("==========================");
+        logger.debug("==========================");
+        logger.debug(hello);
+        logger.debug(sbooProperties.getName());
+        logger.debug(sbooProperties.getFullName());
+        logger.debug("==========================");
     }
 }
