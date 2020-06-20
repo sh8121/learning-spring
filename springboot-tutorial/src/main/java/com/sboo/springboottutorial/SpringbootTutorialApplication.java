@@ -12,7 +12,6 @@ public class SpringbootTutorialApplication {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(SpringbootTutorialApplication.class);
-        app.setWebApplicationType(WebApplicationType.NONE);
         app.run(args);
     }
 }
