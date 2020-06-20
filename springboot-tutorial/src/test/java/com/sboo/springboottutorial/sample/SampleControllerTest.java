@@ -1,11 +1,13 @@
 package com.sboo.springboottutorial.sample;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.system.OutputCaptureRule;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -20,7 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(SampleController.class)
 public class SampleControllerTest {
 
-    //TODO 다른 슬라이스 테스트
+    @Rule
+    public OutputCaptureRule outputCaptureRule = new OutputCaptureRule();
 
     @MockBean
     SampleService mockSampleService;
@@ -33,5 +36,10 @@ public class SampleControllerTest {
         when(mockSampleService.getName()).thenReturn("SangHoon");
         mockMvc.perform(get("/hello"))
                 .andExpect(content().string("helloSangHoon"));
+
+        assertThat(outputCaptureRule.toString())
+                .contains("Holoman")
+                .contains("don't do that");
+
     }
 }
