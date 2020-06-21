@@ -1,18 +1,26 @@
 package com.sboo.jpatutorial;
 
 import javax.persistence.*;
+import java.util.Date;
 
-@Entity(name = "users")
-//@Table(name = "users")
-public class User {
+@Entity
+public class Account {
     @Id
     @GeneratedValue
     private Long id;
 
-//    @Column
+    @Column(nullable = false, unique = true)
     private String username;
 //    @Column
     private String password;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created = new Date();
+
+    private String yes;
+
+    @Transient
+    private String no;
 
 //    @Column
     private String email;
