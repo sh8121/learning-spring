@@ -1,5 +1,6 @@
 package com.sboo.jpatutorial;
 
+import org.hibernate.Session;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,8 @@ public class JpaRunner implements ApplicationRunner {
         Account account = new Account();
         account.setUsername("kkobuk");
         account.setPassword("kkobuk");
-        entityManager.persist(account);
+
+        Session session = entityManager.unwrap(Session.class);
+        session.save(account);
     }
 }
