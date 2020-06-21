@@ -19,11 +19,11 @@ public class JpaRunner implements ApplicationRunner {
 //    @Transactional
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Account account = new Account();
-        account.setUsername("kkobuk");
-        account.setPassword("kkobuk");
+        User user = new User();
+        user.setUsername("kkobuk");
+        user.setPassword("kkobuk");
 
         Session session = entityManager.unwrap(Session.class);
-        session.save(account);
+        session.save(user);
     }
 }

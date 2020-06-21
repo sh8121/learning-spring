@@ -1,12 +1,10 @@
 package com.sboo.jpatutorial;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
-public class Account {
+@Entity(name = "users")
+//@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue
     private Long id;
