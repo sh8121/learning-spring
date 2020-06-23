@@ -26,11 +26,8 @@ public class JpaRunner implements ApplicationRunner {
 //    @Transactional
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Post> query = builder.createQuery(Post.class);
-        Root<Post> root = query.from(Post.class);
-        query.select(root);
-        List<Post> posts = entityManager.createQuery(query).getResultList();
+        //이 부분 Generic 시간될 때 까보자!
+        List<Post> posts = entityManager.createNativeQuery("Select * from Post", Post.class).getResultList();
         posts.forEach(System.out::println);
     }
 }
