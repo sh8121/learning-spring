@@ -14,23 +14,6 @@ public class Account {
 //    @Column
     private String password;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created = new Date();
-
-    private String yes;
-
-    @Transient
-    private String no;
-
-//    @Column
-    private String email;
-
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "street", column = @Column(name = "home_street"))
-    })
-    private Address address;
-
     public Long getId() {
         return id;
     }
@@ -53,13 +36,5 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
