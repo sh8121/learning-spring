@@ -25,6 +25,9 @@ public class Account {
 //    @Column
     private String email;
 
+    @Embedded
+    private Address address;
+
     public Long getId() {
         return id;
     }
