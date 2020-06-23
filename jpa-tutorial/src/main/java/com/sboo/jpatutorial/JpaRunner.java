@@ -31,5 +31,17 @@ public class JpaRunner implements ApplicationRunner {
         Session session = entityManager.unwrap(Session.class);
         session.save(account);
         session.save(study);
+
+        Account kkobuk = session.load(Account.class, account.getId());
+        //Select Query 발생하지 않음.
+
+        kkobuk.setUsername("kkobuk2");
+        kkobuk.setUsername("kkobuk3");
+        kkobuk.setUsername("kkobuk4");
+        //kkobuk.setUsername("kkobuk1");
+        //객체의 변경 사항에 대한 Update가 알아서 일어남.
+
+        System.out.println("=========================");
+        System.out.println(kkobuk.getUsername());
     }
 }
