@@ -26,6 +26,9 @@ public class Account {
     private String email;
 
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "street", column = @Column(name = "home_street"))
+    })
     private Address address;
 
     public Long getId() {
