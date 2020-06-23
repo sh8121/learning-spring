@@ -16,7 +16,7 @@ public class Account {
 //    @Column
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private Set<Study> studies = new HashSet<>();
 
     public Long getId() {
@@ -49,5 +49,15 @@ public class Account {
 
     public void setStudies(Set<Study> studies) {
         this.studies = studies;
+    }
+
+    public void addStudy(Study study) {
+        this.studies.add(study);
+        study.setOwner(this);
+    }
+
+    public void removeStudy(Study study) {
+        this.studies.remove(study);
+        study.setOwner(null);
     }
 }
