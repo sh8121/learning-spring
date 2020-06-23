@@ -3,6 +3,7 @@ package com.sboo.jpatutorial;
 import org.hibernate.Session;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,29 +20,20 @@ public class JpaRunner implements ApplicationRunner {
 //    @Transactional
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Account account = new Account();
-        account.setUsername("kkobuk1");
-        account.setPassword("kkobuk1");
-
-        Study study = new Study();
-        study.setName("Spring Data Jpa");
-
-        account.addStudy(study);
+//        Post post = new Post();
+//        post.setTitle("Spring Data JPA");
+//
+//        Comment comment = new Comment();
+//        comment.setComment("빨리 보고 싶어요.");
+//        post.addComment(comment);
+//
+//        Comment comment1 = new Comment();
+//        comment1.setComment("곧 보여드릴게요");
+//        post.addComment(comment1);
 
         Session session = entityManager.unwrap(Session.class);
-        session.save(account);
-        session.save(study);
 
-        Account kkobuk = session.load(Account.class, account.getId());
-        //Select Query 발생하지 않음.
-
-        kkobuk.setUsername("kkobuk2");
-        kkobuk.setUsername("kkobuk3");
-        kkobuk.setUsername("kkobuk4");
-        //kkobuk.setUsername("kkobuk1");
-        //객체의 변경 사항에 대한 Update가 알아서 일어남.
-
-        System.out.println("=========================");
-        System.out.println(kkobuk.getUsername());
+        Post post = session.get(Post.class, 1l);
+        session.delete(post);
     }
 }
