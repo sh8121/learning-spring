@@ -16,6 +16,7 @@ public interface MyRepository<T, Id extends Serializable> extends Repository<T, 
 
     long count();
 
-    <E extends T> Optional<E> findById(Id id);
-//    <E extends T> E findById(Id id);
+    <E extends T> E findById(Id id);
+//     <E extends T> Optional<E> findById(Id id);
+
 }
