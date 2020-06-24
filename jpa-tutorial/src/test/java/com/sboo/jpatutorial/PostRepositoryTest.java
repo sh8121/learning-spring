@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+//Application 환경과 DB 분리
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class PostRepositoryTest {
@@ -53,5 +53,20 @@ public class PostRepositoryTest {
         assertThat(page.getNumber()).isEqualTo(0);
         assertThat(page.getSize()).isEqualTo(10);
         assertThat(page.getNumberOfElements()).isEqualTo(1);
+
+        //When
+        page = postRepository.findByTitleContains("spring", PageRequest.of(0, 10));
+
+        //Then
+        assertThat(page.getTotalElements()).isEqualTo(1);
+        assertThat(page.getNumber()).isEqualTo(0);
+        assertThat(page.getSize()).isEqualTo(10);
+        assertThat(page.getNumberOfElements()).isEqualTo(1);
+
+        //When
+        long count = postRepository.countByTitleContains("spring");
+
+        //Then
+        assertThat(count).isEqualTo(1);
     }
 }
