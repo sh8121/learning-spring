@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,5 +29,10 @@ public class CommentRepositoryTest {
 
         long count = commentRepository.count();
         assertThat(count).isEqualTo(1);
+
+        Optional<Comment> optional = commentRepository.findById(100l);
+        assertThat(optional).isNotNull();
+        assertThat(optional).isEmpty();
+//        Comment comment1 = optional.orElseThrow(IllegalArgumentException::new);
     }
 }
