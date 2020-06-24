@@ -13,9 +13,14 @@ public class JpaRunner implements ApplicationRunner {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    Sboo sboo;
+
 //    @Transactional
     @Override
     public void run(ApplicationArguments args) throws Exception {
         postRepository.findAll().forEach(System.out::println);
+        System.out.println(sboo.getName());
     }
 }
+ 
