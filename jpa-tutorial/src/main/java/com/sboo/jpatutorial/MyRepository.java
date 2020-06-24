@@ -12,7 +12,7 @@ import java.util.Optional;
 @NoRepositoryBean
 public interface MyRepository<T, Id extends Serializable> extends Repository<T, Id> {
 //    T save(T t);
-        <E extends T> E save(@NonNull E e);
+        <E extends T> E save(E e);
 
     List<T> findAll();
 
