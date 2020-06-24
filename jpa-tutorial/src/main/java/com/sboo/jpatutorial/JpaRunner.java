@@ -19,8 +19,14 @@ public class JpaRunner implements ApplicationRunner {
 //    @Transactional
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        postRepository.findAll().forEach(System.out::println);
-        System.out.println(sboo.getName());
+        Post post = new Post();
+        post.setTitle("spring");
+
+        Comment comment = new Comment();
+        comment.setComment("hello");
+
+        //INSERT, UPDATE
+        postRepository.save(post);
     }
 }
  
