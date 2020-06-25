@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 
 @Entity
 public class Comment {
@@ -14,6 +15,10 @@ public class Comment {
 
     @ManyToOne
     private Post post;
+
+    private Date created;
+
+    private int like;
 
     public Long getId() {
         return id;
@@ -37,5 +42,21 @@ public class Comment {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
     }
 }
