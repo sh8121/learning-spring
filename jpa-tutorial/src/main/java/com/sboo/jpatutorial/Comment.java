@@ -18,7 +18,8 @@ public class Comment {
 
     private Date created;
 
-    private int like;
+    private Integer likeCount;
+//    private int likeCount;
 
     public Long getId() {
         return id;
@@ -52,11 +53,11 @@ public class Comment {
         this.created = created;
     }
 
-    public int getLike() {
-        return like;
+    public Integer getLikeCount() {
+        return likeCount;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
     }
 }
