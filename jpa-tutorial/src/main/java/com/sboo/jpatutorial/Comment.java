@@ -60,4 +60,12 @@ public class Comment {
     public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "comment='" + comment + '\'' +
+                ", likeCount=" + likeCount +
+                '}';
+    }
 }

@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,30 +25,18 @@ public class CommentRepositoryTest {
     CommentRepository commentRepository;
 
     @Test
-    public void crud() {
+    public void crud() throws ExecutionException, InterruptedException {
         this.createComment("spring data jpa", 100);
         this.createComment("hibernate Spring", 55);
         this.createComment("SPRING boot", 45);
 
-
-
-//        List<Comment> comments = commentRepository.findByCommentContains("Spring");
-//        SQL 비교해보기!
-//        List<Comment> comments = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountDesc("Spring");
-//        List<Comment> comments = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountAsc("Spring");
-//        assertThat(comments.size()).isEqualTo(3);
-//        assertThat(comments).first().hasFieldOrPropertyWithValue("likeCount", 45);
-
-//        PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "likeCount"));
-//        Page<Comment> page = commentRepository.findByCommentContainsIgnoreCase("Spring", pageRequest);
-//        assertThat(page.getNumberOfElements()).isEqualTo(3);
-//        assertThat(page).first().hasFieldOrPropertyWithValue("likeCount", 100);
-
         PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "likeCount"));
-        try(Stream<Comment> stream = commentRepository.findByCommentContainsIgnoreCase("Spring", pageRequest);) {
-            Comment comment = stream.findFirst().get();
-            assertThat(comment.getLikeCount()).isEqualTo(100);
-        }
+        Future<List<Comment>> future = commentRepository.findByCommentContainsIgnoreCase("Spring", pageRequest);
+        System.out.println("===========================");
+        System.out.println("is done?" + future.isDone());
+
+        List<Comment> comments = future.get(); //Blocking
+        comments.forEach(System.out::println);
     }
 
     private void createComment(String commentStr, int likeCount) {
