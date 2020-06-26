@@ -7,15 +7,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface CommentRepository extends MyRepository<Comment, Long> {
-
     List<Comment> findByCommentContains(String keyword);
-
-//    Error!
-//    List<Comment> findByTitleContains(String  keyword);
-
-    Page<Comment> findByLikeCountGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Pageable pageable);
-//    List<Comment> findByLikeGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Sort sort);
-//    List<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Pageable pageable);
+    List<Comment> findByCommentContainsIgnoreCase(String keyword);
+    List<Comment> findByCommentContainsIgnoreCaseAndLikeCountGreaterThan(String keyword, int likeCount);
+    List<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountAsc(String keyword);
+    List<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
+//    Page<Comment> findByCommentContainsIgnoreCase(String keyword, Pageable pageable);
+    Stream<Comment> findByCommentContainsIgnoreCase(String keyword, Pageable pageable);
 }

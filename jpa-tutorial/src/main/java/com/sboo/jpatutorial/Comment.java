@@ -18,7 +18,7 @@ public class Comment {
 
     private Date created;
 
-    private Integer likeCount;
+    private Integer likeCount = 0;
 //    private int likeCount;
 
     public Long getId() {
