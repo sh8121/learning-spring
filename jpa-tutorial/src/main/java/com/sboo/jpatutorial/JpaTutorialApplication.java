@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND)
 @Import(SbooRegistrar.class)
-//@EnableAsync
+@EnableAsync
 public class JpaTutorialApplication {
 
     public static void main(String[] args) {
