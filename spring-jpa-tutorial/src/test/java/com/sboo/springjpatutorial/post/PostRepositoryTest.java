@@ -18,24 +18,13 @@ public class PostRepositoryTest {
     @Autowired
     PostRepository postRepository;
 
-    @Autowired
-    ApplicationContext applicationContext;
-
-    @Test
-    public void event() {
-        Post post = new Post();
-        post.setTitle("event");
-        PostPublishedEvent event = new PostPublishedEvent(post);
-        applicationContext.publishEvent(event);
-    }
-
     @Test
     public void crud() {
         Post post = new Post();
         post.setTitle("hibernate");
 
         assertThat(postRepository.contains(post)).isFalse();
-        postRepository.save(post);
+        postRepository.save(post.publish());
         assertThat(postRepository.contains(post)).isTrue();
 
         postRepository.delete(post);
