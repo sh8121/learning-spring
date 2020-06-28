@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.util.List;
 
 // 잘 동작하는데? 머가 바뀐거야?
-//public class SimpleMyRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements MyRepository<T, ID> {
-public class SimpleMyRepository<T, ID extends Serializable> extends QuerydslJpaRepository<T, ID> implements MyRepository<T, ID> {
+// RepositoryExtension????
+//public class SimpleMyRepository<T, ID extends Serializable> extends QuerydslJpaRepository<T, ID> implements MyRepository<T, ID> {
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+public class SimpleMyRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements MyRepository<T, ID> {
 
     private EntityManager entityManager;
 
