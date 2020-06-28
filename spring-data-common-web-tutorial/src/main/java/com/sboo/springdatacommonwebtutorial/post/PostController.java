@@ -17,9 +17,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String getPost(@PathVariable Long id) {
-        Optional<Post> byId = postRepository.findById(id);
-        Post post = byId.get();
+    public String getPost(@PathVariable("id") Post post) {
         return post.getTitle();
     }
 
