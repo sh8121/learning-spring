@@ -49,6 +49,9 @@ class PostControllerTest {
         assertFalse(entityManager.contains(postUpdate));
         assertNotEquals(updatedPost, postUpdate);
 
+        //postUpdate.setTitle("Sang Hoon"); // 상태 변화 감지 x
+        updatedPost.setTitle("Sang Hoon");
+
         List<Post> all = postRepository.findAll();
         assertEquals(all.size(), 1);
     }
