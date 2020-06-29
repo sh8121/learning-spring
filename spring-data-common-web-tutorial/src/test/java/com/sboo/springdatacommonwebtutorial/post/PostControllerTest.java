@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -23,13 +25,31 @@ class PostControllerTest {
     @Autowired
     PostRepository postRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Test
-    public void crud() {
+    public void save() {
         Post post = new Post();
         post.setTitle("jpa");
-        postRepository.save(post);
+        Post savedPost = postRepository.save(post); // insert, persist
 
-        List<Post> posts = postRepository.findAll();
-        assertEquals(posts.size(), 1);
+        System.out.println("post: " + post);
+        System.out.println("savedPost: " + savedPost);
+        assertTrue(entityManager.contains(post));
+        assertTrue(entityManager.contains(savedPost));
+        assertEquals(savedPost, post);
+
+
+        Post postUpdate = new Post();
+        postUpdate.setId(post.getId());
+        postUpdate.setTitle("hibernate");
+        Post updatedPost = postRepository.save(postUpdate); // update, merge
+        assertTrue(entityManager.contains(updatedPost));
+        assertFalse(entityManager.contains(postUpdate));
+        assertNotEquals(updatedPost, postUpdate);
+
+        List<Post> all = postRepository.findAll();
+        assertEquals(all.size(), 1);
     }
 }
