@@ -29,30 +29,22 @@ class PostControllerTest {
     private EntityManager entityManager;
 
     @Test
-    public void save() {
+    public void findByTitleStartsWith() {
         Post post = new Post();
-        post.setTitle("jpa");
-        Post savedPost = postRepository.save(post); // insert, persist
+        post.setTitle("Spring Data JPA");
+        postRepository.save(post);
 
-        System.out.println("post: " + post);
-        System.out.println("savedPost: " + savedPost);
-        assertTrue(entityManager.contains(post));
-        assertTrue(entityManager.contains(savedPost));
-        assertEquals(savedPost, post);
+        List<Post> posts = postRepository.findByTitleStartsWith("Spring");
+        assertEquals(posts.size(), 1);
+    }
 
+    @Test
+    public void findByTitle() {
+        Post post = new Post();
+        post.setTitle("Spring");
+        postRepository.save(post);
 
-        Post postUpdate = new Post();
-        postUpdate.setId(post.getId());
-        postUpdate.setTitle("hibernate");
-        Post updatedPost = postRepository.save(postUpdate); // update, merge
-        assertTrue(entityManager.contains(updatedPost));
-        assertFalse(entityManager.contains(postUpdate));
-        assertNotEquals(updatedPost, postUpdate);
-
-        //postUpdate.setTitle("Sang Hoon"); // 상태 변화 감지 x
-        updatedPost.setTitle("Sang Hoon");
-
-        List<Post> all = postRepository.findAll();
-        assertEquals(all.size(), 1);
+        List<Post> posts = postRepository.findByTitle("Spring");
+        assertEquals(posts.size(), 1);
     }
 }
