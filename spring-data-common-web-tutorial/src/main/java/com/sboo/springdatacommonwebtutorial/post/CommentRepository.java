@@ -14,5 +14,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     //Closed Projection
 //    List<Comment> findByPost_Id(Long id);
-    List<CommentSummary> findByPost_Id(Long id);
+    <T> List<T> findByPost_Id(Long id, Class<T> clazz);
 }
