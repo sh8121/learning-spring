@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,21 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CommentRepositoryTest {
 
     @Autowired
-    PostRepository postRepository;
-
-    @Autowired
     CommentRepository commentRepository;
 
     @Test
     public void getComment() {
-//        Post post = new Post();
-//        post.setTitle("jpa");
-//        Post savedPost = postRepository.save(post);
-//
-//        Comment comment = new Comment();
-//        comment.setComment("comment");
-//        comment.setPost(savedPost);
-//        commentRepository.save(comment);
+        commentRepository.getById(1l);
+
+        System.out.println("==================================");
 
         commentRepository.findById(1l);
     }
