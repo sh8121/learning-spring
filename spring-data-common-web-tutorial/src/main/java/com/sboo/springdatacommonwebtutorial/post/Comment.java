@@ -3,7 +3,6 @@ package com.sboo.springdatacommonwebtutorial.post;
 import javax.persistence.*;
 
 @Entity
-@NamedEntityGraph(name = "Comment.post", attributeNodes = @NamedAttributeNode("post"))
 public class Comment {
     @Id
     @GeneratedValue
