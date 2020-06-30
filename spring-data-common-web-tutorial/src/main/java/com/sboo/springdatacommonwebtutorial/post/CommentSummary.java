@@ -7,7 +7,12 @@ public interface CommentSummary {
     int getUp();
     int getDown();
 
+    // Closed Extended? Projection
+    default String getVotes() {
+        return getUp() + " " + getDown();
+    }
+
     //Open Projection
-    @Value("#{target.up + ' ' + target.down}")
-    String getVotes();
+//    @Value("#{target.up + ' ' + target.down}")
+//    String getVotes();
 }
