@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -44,7 +46,9 @@ class PostControllerTest {
         post.setTitle("Spring");
         postRepository.save(post);
 
-        List<Post> posts = postRepository.findByTitle("Spring");
+//        List<Post> posts = postRepository.findByTitle("Spring", Sort.by("title"));
+//        List<Post> posts = postRepository.findByTitle("Spring", Sort.by("LENGTH(title)"));
+        List<Post> posts = postRepository.findByTitle("Spring", JpaSort.unsafe("LENGTH(title)"));
         assertEquals(posts.size(), 1);
     }
 }
