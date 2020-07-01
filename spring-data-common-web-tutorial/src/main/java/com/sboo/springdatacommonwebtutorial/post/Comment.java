@@ -18,6 +18,10 @@ public class Comment {
 
     private String comment;
 
+    //@Enumerated(value = EnumType.ORDINAL) // Very Dangerous
+    @Enumerated(value = EnumType.STRING)
+    private CommentStatus commentStatus;
+
 //    @ManyToOne
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
