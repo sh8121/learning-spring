@@ -3,6 +3,8 @@ package com.sboo.springdatacommonwebtutorial.post;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -11,6 +13,7 @@ import javax.persistence.NamedEntityGraph;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.List.of;
 import static org.junit.jupiter.api.Assertions.*;
 import static com.sboo.springdatacommonwebtutorial.post.CommentSpecs.*;
 
@@ -54,4 +57,22 @@ public class CommentRepositoryTest {
                 .findAll(isBest().and(isGood()), PageRequest.of(0, 10));
     }
 
+    @Test
+    public void qbe() {
+        Comment prove = new Comment();
+        prove.setBest(true);
+
+//        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+//                .withIncludeNullValues();
+
+//        ExampleMatcher exampleMatcher = ExampleMatcher.matching();
+
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+                .withIgnorePaths("up", "down");
+
+
+        Example<Comment> example = Example.of(prove, exampleMatcher);
+
+        commentRepository.findAll(example);
+    }
 }
