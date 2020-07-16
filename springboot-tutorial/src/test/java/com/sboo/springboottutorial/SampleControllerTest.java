@@ -1,5 +1,9 @@
 package com.sboo.springboottutorial;
 
+import com.gargoylesoftware.htmlunit.Page;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlHeading1;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,16 +20,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(SampleController.class)
 class SampleControllerTest {
     @Autowired
-    MockMvc mockMvc;
+    WebClient webClient;
 
     @Test
     public void hello() throws Exception {
-        mockMvc.perform(get("/hello"))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(view().name("hello"))
-                .andExpect(model().attribute("name", is("sboo")))
-                .andExpect(content().string(containsString("sboo")));
+        HtmlPage page = webClient.getPage("/hello");
+        HtmlHeading1 h1 = page.getFirstByXPath("//h1");
+        assertEquals(h1.getTextContent(), "sboo");
     }
 
 }
