@@ -21,13 +21,12 @@ public class SampleController {
         return "hello";
     }
 
-    @ExceptionHandler(SampleException.class)
-    @ResponseBody
-    public AppError sampleError(SampleException exception) {
-        AppError appError = new AppError();
-        appError.setMessage("error.app.key");
-        appError.setReason("akakakakakak");
-        return appError;
-    }
-
+//    @ExceptionHandler(SampleException.class)
+//    @ResponseBody
+//    public AppError sampleError(SampleException exception) {
+//        AppError appError = new AppError();
+//        appError.setMessage("error.app.key");
+//        appError.setReason("akakakakakak");
+//        return appError;
+//    }
 }
