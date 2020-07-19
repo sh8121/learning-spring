@@ -1,32 +1,21 @@
 package com.sboo.springboottutorial;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@Controller
+@RestController
 public class SampleController {
-
-    @GetMapping("/exception")
-    public void exception() {
-        throw new SampleException();
-    }
-
     @GetMapping("/hello")
-    public String hello(Model model) {
-        model.addAttribute("name", "sboo");
-        return "hello";
-    }
+    public EntityModel<Hello> hello() {
+        Hello hello = new Hello();
+        hello.setPrefix("Hey, ");
+        hello.setName("sboo");
 
-//    @ExceptionHandler(SampleException.class)
-//    @ResponseBody
-//    public AppError sampleError(SampleException exception) {
-//        AppError appError = new AppError();
-//        appError.setMessage("error.app.key");
-//        appError.setReason("akakakakakak");
-//        return appError;
-//    }
+        EntityModel<Hello> helloEntityModel = new EntityModel<>(hello);
+        helloEntityModel.add(linkTo(methodOn(SampleController.class).hello()).withSelfRel());
+        return helloEntityModel;
+    }
 }
