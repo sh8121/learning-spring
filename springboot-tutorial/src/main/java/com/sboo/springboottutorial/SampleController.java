@@ -8,9 +8,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:18080")
 public class SampleController {
-
-    @CrossOrigin(origins = "http://localhost:18080")
     @GetMapping("/hello")
     public String hello() {
         return "hello";
