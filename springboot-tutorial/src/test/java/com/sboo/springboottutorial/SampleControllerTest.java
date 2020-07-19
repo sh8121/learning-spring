@@ -12,19 +12,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(SampleController.class)
 class SampleControllerTest {
-
-    @Autowired
-    MockMvc mockMvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
     @Test
     public void hello() throws Exception {
-        mockMvc.perform(get("/hello"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$._links.self").exists());
+
     }
 
 }
