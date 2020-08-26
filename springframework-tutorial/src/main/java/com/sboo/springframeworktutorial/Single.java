@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Single {
     @Autowired
     private Proto proto;
+    //계속 사용해도 이게 변경되지 않음.
 
     public Proto getProto() {
         return proto;
