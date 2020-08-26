@@ -6,8 +6,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
-//Proxy Bean을 만들어서 주입.
+@Scope(value = "prototype")
 public class Proto {
 //    @Autowired
 //    Single single;
