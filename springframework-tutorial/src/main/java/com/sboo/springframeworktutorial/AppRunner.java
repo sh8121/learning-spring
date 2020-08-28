@@ -15,6 +15,9 @@ public class AppRunner implements ApplicationRunner {
     @Autowired
     ApplicationContext context;
 
+    @Autowired
+    BookRepository bookRepository;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         Environment environment = context.getEnvironment();
