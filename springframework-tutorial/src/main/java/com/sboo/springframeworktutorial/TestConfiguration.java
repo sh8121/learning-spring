@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("test")
 public class TestConfiguration {
     @Bean
+    @Profile("test")
     public BookRepository bookRepository() {
         return new TestBookRepository();
     }
