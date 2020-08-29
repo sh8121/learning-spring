@@ -15,14 +15,19 @@ import java.nio.file.Path;
 public class AppRunner implements ApplicationRunner {
 
     @Autowired
-    private ResourceLoader resourceLoader;
+    private ApplicationContext resourceLoader;
 
 //    @Autowired
 //    private ApplicationContext resourceLoader;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Resource resource = resourceLoader.getResource("classpath:/test.txt");
+        System.out.println(resourceLoader.getClass());
+
+//        Resource resource = resourceLoader.getResource("classpath:/test.txt");
+        Resource resource = resourceLoader.getResource("test.txt");
+        System.out.println(resource.getClass());
+
         System.out.println(resource.exists());
         System.out.println(resource.getDescription());
         System.out.println(Files.readString(Path.of(resource.getURI())));
