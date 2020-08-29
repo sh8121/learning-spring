@@ -12,14 +12,17 @@ import java.util.Locale;
 @Component
 public class AppRunner implements ApplicationRunner {
 
+//    @Autowired
+//    private MessageSource messageSource;
+
     @Autowired
-    private MessageSource messageSource;
+    private ApplicationContext applicationContext;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         while(true) {
-            System.out.println(messageSource.getMessage("greeting", new String[]{"Sang Hoon"}, Locale.getDefault()));
-            System.out.println(messageSource.getMessage("greeting", new String[]{"Sang Hoon"}, Locale.KOREA));
+            System.out.println(applicationContext.getMessage("greeting", new String[]{"Sang Hoon"}, Locale.getDefault()));
+            System.out.println(applicationContext.getMessage("greeting", new String[]{"Sang Hoon"}, Locale.KOREA));
             Thread.sleep(1000l);
         }
     }
